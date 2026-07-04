@@ -1,6 +1,7 @@
 import Section from './ui/Section'
 import Reveal from './ui/Reveal'
 import Tag from './ui/Tag'
+import DropboxMark from './ui/DropboxMark'
 import { experience } from '../data/experience'
 
 export default function ExperienceTimeline() {
@@ -16,7 +17,13 @@ export default function ExperienceTimeline() {
               />
               <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                 <h3 className="font-display text-lg font-semibold text-bright">
-                  {job.role} <span className="text-accent">@ {job.company}</span>
+                  {job.role}{' '}
+                  <span className="text-accent">
+                    @ {job.company}
+                    {job.company === 'Dropbox' && (
+                      <DropboxMark size={16} className="-mt-0.5 ml-1.5 inline-block" />
+                    )}
+                  </span>
                 </h3>
                 <p className="font-mono text-xs text-body/70">{job.period}</p>
               </div>

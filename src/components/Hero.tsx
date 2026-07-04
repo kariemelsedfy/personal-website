@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState, type ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
+import DropboxMark from './ui/DropboxMark'
 import { profile } from '../data/profile'
 
 const HeroCanvas = lazy(() => import('./HeroCanvas'))
@@ -65,11 +66,12 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-content px-6 pt-16">
         <Enter order={0} reduce={reduce}>
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 px-4 py-1.5 font-mono text-xs text-body backdrop-blur">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 px-4 py-1.5 font-mono text-xs text-bright backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
+            <DropboxMark size={15} className="shrink-0" />
             {profile.status}
           </span>
         </Enter>

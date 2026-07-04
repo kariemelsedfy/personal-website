@@ -9,7 +9,7 @@ export const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
   paperUrl: `${import.meta.env.BASE_URL}yolo-encoder-transfer.pdf`,
   tagline: 'Full-stack engineer who ships AI/ML systems end-to-end.',
-  sub: 'CS + Math at Bowdoin ’28. I build GPU inference pipelines, real-time web apps, and dev tools — from first commit to production.',
+  sub: 'CS + Math at Bowdoin ’28, currently interning at Dropbox. I build GPU inference pipelines, real-time web apps, and dev tools — from first commit to production.',
   about: [
     'I’m a Computer Science and Mathematics major at Bowdoin College (’28), currently interning at Dropbox on the Teams Formation team — shipping full-stack conversion features across a React/TypeScript frontend and Python gRPC backend services.',
     'I like building where product engineering meets machine learning: a GPU-accelerated virtual try-on pipeline on Kubernetes, face recognition serving 8K daily users in Cairo, a research-paper ETL pipeline ingesting 11+ economics journals, and independent research on repurposing YOLO encoders for semantic segmentation.',
@@ -19,7 +19,7 @@ export const profile = {
     { value: '3.85', label: 'GPA — CS + Math @ Bowdoin, Dean’s List' },
     { value: '8K+', label: 'daily users of the face-auth I built at Palmera' },
     { value: '82', label: 'students mentored as a CS teaching assistant' },
-    { value: '6,080', label: 'articles surfaced by my Crossref polling pipeline' },
+    { value: '48h', label: 'from idea to shipped app at Hack@Brown 2025' },
   ],
   education: {
     school: 'Bowdoin College',
