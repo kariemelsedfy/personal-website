@@ -20,6 +20,17 @@ export const experience: Experience[] = [
     tags: ['React', 'TypeScript', 'Python', 'gRPC', 'A/B Testing'],
   },
   {
+    company: 'Palmera Systems Co.',
+    role: 'Software Engineer Intern',
+    period: 'Jun 2025 — Aug 2025',
+    location: 'Cairo, Egypt',
+    bullets: [
+      'Architected the face-recognition and anti-spoofing feature for the smartIN app (8K daily users) — dataset curation and model fine-tuning with DeepFace/OpenCV, reaching 96% detection accuracy.',
+      'Built Angular front-ends and .NET Core + PostgreSQL services matching live captures against the database in under 2s, cutting authentication latency by 50%.',
+    ],
+    tags: ['DeepFace', 'OpenCV', 'Angular', '.NET Core', 'PostgreSQL'],
+  },
+  {
     company: 'Ungated Research · Bowdoin College',
     role: 'Software Engineer',
     period: 'Mar 2026 — Present',
@@ -40,17 +51,6 @@ export const experience: Experience[] = [
       'Lifted mean IoU from 0.600 to 0.684 on the CUB dataset and wrote the results up as an IEEE-format paper, advised by Prof. Jeova Farias.',
     ],
     tags: ['PyTorch', 'Computer Vision', 'YOLO', 'Research'],
-  },
-  {
-    company: 'Palmera Systems Co.',
-    role: 'Software Engineer Intern',
-    period: 'Jun 2025 — Aug 2025',
-    location: 'Cairo, Egypt',
-    bullets: [
-      'Architected the face-recognition and anti-spoofing feature for the smartIN app (8K daily users) — dataset curation and model fine-tuning with DeepFace/OpenCV, reaching 96% detection accuracy.',
-      'Built Angular front-ends and .NET Core + PostgreSQL services matching live captures against the database in under 2s, cutting authentication latency by 50%.',
-    ],
-    tags: ['DeepFace', 'OpenCV', 'Angular', '.NET Core', 'PostgreSQL'],
   },
   {
     company: 'Bowdoin CS Department',

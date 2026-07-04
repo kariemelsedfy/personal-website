@@ -3,7 +3,6 @@ export const profile = {
   role: 'Full-Stack & AI Engineer',
   status: 'Software Engineer Intern @ Dropbox',
   location: 'Brunswick, ME',
-  origin: 'Cairo, Egypt',
   email: 'kariemelsedfy@gmail.com',
   github: 'https://github.com/kariemelsedfy',
   linkedin: 'https://www.linkedin.com/in/karim-el-sedfy-4809711a2/',

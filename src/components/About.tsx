@@ -56,7 +56,7 @@ export default function About() {
                 <p className="font-display font-semibold text-bright">{profile.name}</p>
                 <p className="mt-0.5 flex items-center gap-1.5 text-sm">
                   <MapPin size={14} className="text-accent" />
-                  {profile.location} · from {profile.origin}
+                  {profile.location}
                 </p>
               </div>
             </div>
