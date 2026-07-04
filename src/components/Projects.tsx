@@ -22,7 +22,7 @@ function ProjectLinks({ links }: { links: ProjectLink[] }) {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-bright transition-colors hover:text-cyan2"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-bright transition-colors hover:text-accent"
         >
           <LinkIcon kind={kind} />
           {label}
@@ -36,17 +36,15 @@ function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
   return (
     <Reveal delay={delay} className="h-full">
       <TiltCard className="flex h-full flex-col p-6">
-        {project.badge && <p className="mb-3 font-mono text-xs text-cyan2">{project.badge}</p>}
+        {project.badge && <p className="mb-3 font-mono text-xs text-accent">{project.badge}</p>}
         <h3 className="font-display text-xl font-semibold text-bright">{project.title}</h3>
-        <p className="mt-3 text-sm leading-relaxed">{project.blurb}</p>
+        <p className="mt-3 max-w-[60ch] text-sm leading-relaxed">{project.blurb}</p>
         {project.metrics && (
-          <div className="mt-5 grid grid-cols-3 gap-4 rounded-xl border border-line bg-raised/60 p-4">
+          <div className="mt-5 grid grid-cols-3 gap-4 border-t border-line pt-4">
             {project.metrics.map(({ value, label }) => (
               <div key={label}>
-                <p className="font-display text-lg font-bold">
-                  <span className="text-gradient">{value}</span>
-                </p>
-                <p className="mt-0.5 text-[11px] leading-snug text-body/80">{label}</p>
+                <p className="font-display text-lg font-bold text-accent">{value}</p>
+                <p className="mt-0.5 text-xs leading-snug text-body/80">{label}</p>
               </div>
             ))}
           </div>
@@ -69,22 +67,18 @@ export default function Projects() {
     <Section id="projects" eyebrow="projects" title="Selected work">
       {/* Flagship */}
       <Reveal>
-        <div className="relative overflow-hidden rounded-2xl border border-line bg-surface">
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-indigo2 via-violet2 to-cyan2"
-          />
-          <div className="grid md:grid-cols-[3fr,2fr]">
-            <div className="p-6 md:p-10">
-              <p className="mb-3 font-mono text-xs text-cyan2">{flagship.badge}</p>
-              <h3 className="font-display text-2xl font-bold text-bright md:text-3xl">
+        <div className="relative rounded-lg border border-line border-t-accent/60 bg-surface p-6 md:p-10">
+          <div className="grid gap-8 md:grid-cols-[3fr,2fr] md:gap-10">
+            <div>
+              <p className="mb-3 font-mono text-xs text-accent">{flagship.badge}</p>
+              <h3 className="font-display text-2xl font-bold leading-[1.35] text-bright md:text-3xl md:leading-[1.35]">
                 {flagship.title}
               </h3>
-              <p className="mt-4 leading-relaxed">{flagship.blurb}</p>
-              <ul className="mt-5 space-y-2.5">
+              <p className="mt-4 max-w-[60ch] leading-relaxed">{flagship.blurb}</p>
+              <ul className="mt-5 max-w-[58ch] space-y-2.5 text-sm">
                 {flagship.bullets?.map((bullet) => (
-                  <li key={bullet} className="flex gap-3 text-sm leading-relaxed">
-                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-cyan2">
+                  <li key={bullet} className="flex gap-3 leading-relaxed">
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">
                       ▹
                     </span>
                     {bullet}
@@ -102,20 +96,20 @@ export default function Projects() {
             </div>
 
             {/* Pipeline visual */}
-            <div className="flex items-center justify-center border-t border-line bg-raised/40 p-8 md:border-l md:border-t-0 md:p-10">
+            <div className="flex items-center border-t border-line pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
               <div className="w-full max-w-xs">
+                <p className="mb-3 font-mono text-xs uppercase tracking-wider text-body/70">
+                  request lifecycle
+                </p>
                 {pipeline.map((step, i) => (
-                  <div key={step}>
-                    <div className="flex items-center justify-between rounded-lg border border-line bg-surface px-4 py-2.5 font-mono text-sm text-bright">
-                      <span>{step}</span>
-                      <span className="text-xs text-cyan2">0{i + 1}</span>
-                    </div>
-                    {i < pipeline.length - 1 && (
-                      <div
-                        aria-hidden="true"
-                        className="mx-auto h-5 w-px bg-gradient-to-b from-violet2 to-cyan2"
-                      />
-                    )}
+                  <div
+                    key={step}
+                    className={`flex items-center justify-between py-3 font-mono text-sm text-bright ${
+                      i < pipeline.length - 1 ? 'border-b border-line' : ''
+                    }`}
+                  >
+                    <span>{step}</span>
+                    <span className="text-xs text-accent">0{i + 1}</span>
                   </div>
                 ))}
               </div>
@@ -135,7 +129,7 @@ export default function Projects() {
       <Reveal delay={0.1}>
         <div className="mt-16">
           <div className="flex items-baseline justify-between">
-            <h3 className="font-mono text-sm text-cyan2">// more on GitHub</h3>
+            <h3 className="font-mono text-sm text-accent">// more on GitHub</h3>
             <a
               href={profile.github}
               target="_blank"
@@ -152,7 +146,7 @@ export default function Projects() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="group rounded-xl border border-line bg-surface p-4 transition-colors hover:border-cyan2/40"
+                className="group rounded-md border border-line bg-surface p-4 transition-colors hover:border-accent/40"
               >
                 <p className="flex items-center justify-between font-mono text-sm text-bright">
                   {name}
@@ -162,7 +156,7 @@ export default function Projects() {
                   />
                 </p>
                 <p className="mt-2 text-xs leading-relaxed">{desc}</p>
-                <p className="mt-3 font-mono text-[11px] text-cyan2">{lang}</p>
+                <p className="mt-3 font-mono text-xs text-accent">{lang}</p>
               </a>
             ))}
           </div>

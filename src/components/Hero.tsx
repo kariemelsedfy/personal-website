@@ -1,22 +1,35 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
+import { Suspense, lazy, useEffect, useState, type ReactNode } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
 import { profile } from '../data/profile'
 
 const HeroCanvas = lazy(() => import('./HeroCanvas'))
 
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-}
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] } },
+function Enter({
+  children,
+  order,
+  className,
+  reduce,
+}: {
+  children: ReactNode
+  order: number
+  className?: string
+  reduce: boolean
+}) {
+  return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.05 + order * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
 }
 
 export default function Hero() {
-  const reduce = useReducedMotion()
+  const reduce = useReducedMotion() ?? false
   const [canvasOk, setCanvasOk] = useState(false)
 
   useEffect(() => {
@@ -39,7 +52,7 @@ export default function Hero() {
   const showCanvas = canvasOk && !reduce
 
   return (
-    <section id="top" className="relative flex min-h-screen items-center overflow-hidden">
+    <section id="top" className="relative flex min-h-screen items-center">
       {/* Static gradient is always present; the shader canvas paints over it when enabled */}
       <div className="hero-static absolute inset-0" />
       {showCanvas && (
@@ -50,52 +63,45 @@ export default function Hero() {
       {/* Fade the bottom edge into the page background */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-base" />
 
-      <motion.div
-        variants={container}
-        initial={reduce ? false : 'hidden'}
-        animate="show"
-        className="relative z-10 mx-auto w-full max-w-content px-6 pt-16"
-      >
-        <motion.div variants={item}>
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-4 py-1.5 font-mono text-xs text-body backdrop-blur">
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 pt-16">
+        <Enter order={0} reduce={reduce}>
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 px-4 py-1.5 font-mono text-xs text-body backdrop-blur">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan2 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan2" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
             {profile.status}
           </span>
-        </motion.div>
+        </Enter>
 
-        <motion.h1
-          variants={item}
-          className="mt-8 font-display text-5xl font-extrabold tracking-tight text-bright sm:text-7xl lg:text-8xl"
-        >
-          Karim ElSedfy
-        </motion.h1>
+        <Enter order={1} reduce={reduce}>
+          <h1 className="mt-8 font-display text-5xl font-bold leading-[1.35] tracking-tight text-bright sm:text-7xl sm:leading-[1.35] lg:text-8xl lg:leading-[1.35]">
+            Karim ElSedfy
+          </h1>
+        </Enter>
 
-        <motion.p
-          variants={item}
-          className="mt-6 max-w-3xl font-display text-2xl font-semibold text-bright/90 md:text-4xl"
-        >
-          Full-stack engineer who ships <span className="text-gradient">AI/ML systems</span>{' '}
-          end-to-end.
-        </motion.p>
+        <Enter order={2} reduce={reduce}>
+          <p className="mt-6 max-w-3xl font-display text-2xl font-medium leading-[1.35] text-bright md:text-4xl md:leading-[1.35]">
+            Full-stack engineer who ships <span className="text-accent">AI/ML systems</span>{' '}
+            end-to-end.
+          </p>
+        </Enter>
 
-        <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-relaxed">
-          {profile.sub}
-        </motion.p>
+        <Enter order={3} reduce={reduce}>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#cfc8ba]">{profile.sub}</p>
+        </Enter>
 
-        <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
+        <Enter order={4} reduce={reduce} className="mt-10 flex flex-wrap items-center gap-4">
           <a
             href="#projects"
-            className="rounded-lg bg-gradient-to-r from-indigo2 via-violet2 to-cyan2 px-6 py-3 font-semibold text-white transition-[filter] hover:brightness-110"
+            className="rounded-md bg-accent px-6 py-3 font-semibold text-ink transition-[filter] hover:brightness-110"
           >
             View my work
           </a>
           <a
             href={profile.resumeUrl}
             download="KarimElSedfyResume.pdf"
-            className="rounded-lg border border-line bg-surface/60 px-6 py-3 font-semibold text-bright backdrop-blur transition-colors hover:border-violet2/50"
+            className="rounded-md border border-line bg-surface px-6 py-3 font-semibold text-bright transition-colors hover:border-accent/50"
           >
             Download resume
           </a>
@@ -126,8 +132,8 @@ export default function Hero() {
               <Mail size={22} />
             </a>
           </div>
-        </motion.div>
-      </motion.div>
+        </Enter>
+      </div>
 
       {!reduce && (
         <motion.a

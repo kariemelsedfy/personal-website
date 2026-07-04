@@ -7,18 +7,18 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-content px-6 py-24 md:py-32">
       <Reveal>
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-sm text-cyan2">// contact</p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-bright md:text-5xl">
-            Let’s build <span className="text-gradient">something</span>.
+          <p className="font-mono text-sm text-accent">// contact</p>
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.35] tracking-tight text-bright md:text-5xl md:leading-[1.35]">
+            Let’s build <span className="text-accent">something</span>.
           </h2>
-          <p className="mt-6 leading-relaxed">
+          <p className="mx-auto mt-6 max-w-[55ch] leading-relaxed">
             I’m always up for talking about AI systems, full-stack engineering, internship
             opportunities, or an interesting problem you’re chewing on. My inbox is open.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo2 via-violet2 to-cyan2 px-6 py-3 font-semibold text-white transition-[filter] hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 font-semibold text-ink transition-[filter] hover:brightness-110"
             >
               <Mail size={18} />
               Say hello
@@ -26,7 +26,7 @@ export default function Contact() {
             <a
               href={profile.resumeUrl}
               download="KarimElSedfyResume.pdf"
-              className="inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-6 py-3 font-semibold text-bright transition-colors hover:border-violet2/50"
+              className="inline-flex items-center gap-2 rounded-md border border-line bg-surface px-6 py-3 font-semibold text-bright transition-colors hover:border-accent/50"
             >
               <FileDown size={18} />
               Resume

@@ -13,39 +13,34 @@
   }
 
   ::selection {
-    @apply bg-violet2/40 text-white;
+    @apply bg-accent/30 text-bright;
   }
 
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0f;
+    background: #14120f;
   }
   ::-webkit-scrollbar-thumb {
-    background: #26263a;
+    background: #35302a;
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #34344a;
+    background: #4a4238;
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-cyan2 ring-offset-2 ring-offset-base;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-base;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-indigo2 via-violet2 to-cyan2 bg-clip-text text-transparent;
-  }
-
   /* Static hero background — always rendered; the WebGL canvas paints on top when enabled */
   .hero-static {
     background:
-      radial-gradient(60% 50% at 20% 20%, rgba(99, 102, 241, 0.16), transparent 60%),
-      radial-gradient(50% 45% at 80% 30%, rgba(139, 92, 246, 0.13), transparent 60%),
-      radial-gradient(45% 40% at 60% 85%, rgba(34, 211, 238, 0.08), transparent 60%),
-      #0a0a0f;
+      radial-gradient(55% 45% at 22% 25%, rgba(224, 123, 84, 0.06), transparent 60%),
+      radial-gradient(60% 50% at 75% 35%, rgba(242, 237, 227, 0.04), transparent 60%),
+      #14120f;
   }
 }

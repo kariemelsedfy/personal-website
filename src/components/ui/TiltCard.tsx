@@ -7,8 +7,7 @@ type Props = {
 }
 
 /**
- * Card with a subtle 3D hover tilt and a cursor-following spotlight.
- * Disabled entirely under prefers-reduced-motion.
+ * Card with a subtle 3D hover tilt. Disabled under prefers-reduced-motion.
  */
 export default function TiltCard({ children, className }: Props) {
   const reduce = useReducedMotion()
@@ -24,10 +23,8 @@ export default function TiltCard({ children, className }: Props) {
     const rect = el.getBoundingClientRect()
     const px = (e.clientX - rect.left) / rect.width - 0.5
     const py = (e.clientY - rect.top) / rect.height - 0.5
-    ry.set(px * 6)
-    rx.set(-py * 6)
-    el.style.setProperty('--mx', `${e.clientX - rect.left}px`)
-    el.style.setProperty('--my', `${e.clientY - rect.top}px`)
+    ry.set(px * 5)
+    rx.set(-py * 5)
   }
 
   const onMouseLeave = () => {
@@ -41,16 +38,8 @@ export default function TiltCard({ children, className }: Props) {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={reduce ? undefined : { rotateX: srx, rotateY: sry, transformPerspective: 900 }}
-      className={`group relative rounded-2xl border border-line bg-surface transition-colors duration-300 hover:border-violet2/40 ${className ?? ''}`}
+      className={`relative rounded-lg border border-line bg-surface transition-colors duration-300 hover:border-accent/40 ${className ?? ''}`}
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background:
-            'radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 92, 246, 0.10), transparent 65%)',
-        }}
-      />
       {children}
     </motion.div>
   )

@@ -41,12 +41,12 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'border-b border-line bg-base/80 backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'border-b border-line bg-base/85 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-content items-center justify-between px-6" aria-label="Main">
         <a href="#top" className="flex items-center gap-3">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-indigo2 via-violet2 to-cyan2 font-display text-sm font-bold text-white">
+          <span className="grid h-8 w-8 place-items-center rounded-md border border-accent/60 bg-surface font-mono text-sm font-bold text-accent">
             K
           </span>
           <span className="hidden font-display font-semibold text-bright sm:block">Karim ElSedfy</span>
@@ -61,14 +61,14 @@ export default function Nav() {
                 active === id ? 'text-bright' : 'text-body hover:text-bright'
               }`}
             >
-              <span className="text-cyan2">/</span>
+              <span className="text-accent">/</span>
               {label}
             </a>
           ))}
           <a
             href={profile.resumeUrl}
             download="KarimElSedfyResume.pdf"
-            className="rounded-lg border border-violet2/50 px-4 py-1.5 font-mono text-sm text-bright transition-colors hover:bg-violet2/10"
+            className="rounded-md border border-line px-4 py-1.5 font-mono text-sm text-bright transition-colors hover:border-accent/60"
           >
             resume
           </a>
@@ -94,7 +94,7 @@ export default function Nav() {
                 onClick={() => setOpen(false)}
                 className="font-mono text-sm text-body hover:text-bright"
               >
-                <span className="text-cyan2">/</span>
+                <span className="text-accent">/</span>
                 {label}
               </a>
             ))}

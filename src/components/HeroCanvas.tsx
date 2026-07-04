@@ -58,21 +58,21 @@ const fragmentShader = /* glsl */ `
     );
     float f = fbm(p * 1.4 + r * 1.8);
 
-    vec3 base = vec3(0.039, 0.039, 0.059);
-    vec3 indigo = vec3(0.388, 0.400, 0.945);
-    vec3 violet = vec3(0.545, 0.361, 0.965);
-    vec3 cyan = vec3(0.133, 0.827, 0.933);
+    vec3 base = vec3(0.078, 0.071, 0.059);
+    vec3 smoke = vec3(0.165, 0.149, 0.122);
+    vec3 lift = vec3(0.235, 0.208, 0.169);
+    vec3 ember = vec3(0.878, 0.482, 0.329);
 
     vec3 col = base;
-    col = mix(col, indigo, smoothstep(0.25, 0.95, f) * 0.42);
-    col = mix(col, violet, smoothstep(0.35, 0.95, q.y) * 0.30);
-    col = mix(col, cyan, smoothstep(0.55, 0.98, r.x) * 0.25);
+    col = mix(col, smoke, smoothstep(0.25, 0.95, f) * 0.60);
+    col = mix(col, lift, smoothstep(0.45, 0.98, q.y) * 0.30);
+    col += ember * smoothstep(0.72, 0.98, r.x) * 0.035;
 
-    // Mouse-following glow
+    // Mouse-following ember glow
     vec2 m = vec2(uMouse.x * uAspect, uMouse.y);
     float d = distance(p, m);
     float glow = exp(-d * d * 5.0);
-    col += cyan * glow * 0.16 + violet * glow * 0.12;
+    col += ember * glow * 0.08;
 
     // Vignette
     vec2 c = uv - 0.5;

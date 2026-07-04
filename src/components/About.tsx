@@ -14,15 +14,13 @@ function Avatar() {
         src={src}
         alt="Karim ElSedfy"
         onError={() => setImgOk(false)}
-        className="h-16 w-16 rounded-2xl border border-line object-cover"
+        className="h-16 w-16 rounded-xl border border-line object-cover"
       />
     )
   }
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-indigo2 via-violet2 to-cyan2 p-[2px]">
-      <div className="grid h-[60px] w-[60px] place-items-center rounded-[14px] bg-base font-display text-xl font-bold">
-        <span className="text-gradient">KE</span>
-      </div>
+    <div className="grid h-16 w-16 place-items-center rounded-xl border border-accent/50 bg-surface font-display text-xl font-bold text-accent">
+      KE
     </div>
   )
 }
@@ -31,7 +29,7 @@ export default function About() {
   return (
     <Section id="about" eyebrow="about" title="About me">
       <div className="grid gap-12 md:grid-cols-[3fr,2fr] md:gap-16">
-        <div>
+        <div className="max-w-[65ch]">
           {profile.about.map((paragraph, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <p className="mb-5 leading-relaxed">{paragraph}</p>
@@ -42,9 +40,7 @@ export default function About() {
             <div className="mt-10 grid grid-cols-2 gap-8">
               {profile.stats.map(({ value, label }) => (
                 <div key={label}>
-                  <p className="font-display text-3xl font-bold md:text-4xl">
-                    <span className="text-gradient">{value}</span>
-                  </p>
+                  <p className="font-display text-3xl font-bold text-accent md:text-4xl">{value}</p>
                   <p className="mt-1.5 text-xs leading-relaxed text-body/80">{label}</p>
                 </div>
               ))}
@@ -59,7 +55,7 @@ export default function About() {
               <div>
                 <p className="font-display font-semibold text-bright">{profile.name}</p>
                 <p className="mt-0.5 flex items-center gap-1.5 text-sm">
-                  <MapPin size={14} className="text-cyan2" />
+                  <MapPin size={14} className="text-accent" />
                   {profile.location} · from {profile.origin}
                 </p>
               </div>
@@ -67,8 +63,8 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.18}>
-            <div className="rounded-2xl border border-line bg-surface p-6">
-              <p className="flex items-center gap-2 font-mono text-sm text-cyan2">
+            <div className="rounded-lg border border-line bg-surface p-6">
+              <p className="flex items-center gap-2 font-mono text-sm text-accent">
                 <GraduationCap size={16} />
                 education
               </p>

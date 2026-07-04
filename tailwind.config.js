@@ -4,18 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#0a0a0f',
-        surface: '#12121a',
-        raised: '#1a1a24',
-        line: '#26263a',
-        body: '#a1a1b5',
-        bright: '#e7e7ee',
-        indigo2: '#6366f1',
-        violet2: '#8b5cf6',
-        cyan2: '#22d3ee',
+        base: '#14120f',
+        ink: '#14120f',
+        surface: '#1c1915',
+        raised: '#242019',
+        line: '#35302a',
+        body: '#a9a193',
+        bright: '#f2ede3',
+        accent: '#e07b54',
       },
       fontFamily: {
-        display: ['"Sora Variable"', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk Variable"', 'system-ui', 'sans-serif'],
         sans: ['"Inter Variable"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono Variable"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
