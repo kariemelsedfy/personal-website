@@ -3,7 +3,15 @@ import Section from './ui/Section'
 import Reveal from './ui/Reveal'
 import TiltCard from './ui/TiltCard'
 import Tag from './ui/Tag'
-import { featured, flagship, more, pipeline, type Project, type ProjectLink } from '../data/projects'
+import {
+  featured,
+  flagship,
+  more,
+  personaMotion,
+  pipeline,
+  type Project,
+  type ProjectLink,
+} from '../data/projects'
 import { profile } from '../data/profile'
 
 function LinkIcon({ kind }: { kind: ProjectLink['kind'] }) {
@@ -39,6 +47,23 @@ function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
         {project.badge && <p className="mb-3 font-mono text-xs text-accent">{project.badge}</p>}
         <h3 className="font-display text-xl font-semibold text-bright">{project.title}</h3>
         <p className="mt-3 max-w-[60ch] text-sm leading-relaxed">{project.blurb}</p>
+        {project.image && (
+          <figure className="mt-5">
+            <div className="overflow-hidden rounded-md border border-line">
+              <img
+                src={project.image.src}
+                alt={project.image.alt}
+                loading="lazy"
+                className="w-full"
+              />
+            </div>
+            {project.image.caption && (
+              <figcaption className="mt-2 font-mono text-xs text-body/70">
+                {project.image.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
         {project.metrics && (
           <div className="mt-5 grid grid-cols-3 gap-4 border-t border-line pt-4">
             {project.metrics.map(({ value, label }) => (
@@ -65,8 +90,72 @@ function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
 export default function Projects() {
   return (
     <Section id="projects" eyebrow="projects" title="Selected work">
-      {/* Flagship */}
+      {/* Persona-Motion hero */}
       <Reveal>
+        <div className="relative rounded-lg border border-line border-t-accent/60 bg-surface p-6 md:p-10">
+          <div className="grid gap-8 md:grid-cols-[3fr,2fr] md:gap-10">
+            <div>
+              <p className="mb-3 font-mono text-xs text-accent">{personaMotion.badge}</p>
+              <h3 className="font-display text-2xl font-bold leading-[1.35] text-bright md:text-3xl md:leading-[1.35]">
+                {personaMotion.title}
+              </h3>
+              <p className="mt-4 max-w-[60ch] leading-relaxed">{personaMotion.blurb}</p>
+              <ul className="mt-5 max-w-[58ch] space-y-2.5 text-sm">
+                {personaMotion.bullets?.map((bullet) => (
+                  <li key={bullet} className="flex gap-3 leading-relaxed">
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">
+                      ▹
+                    </span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+              {personaMotion.metrics && (
+                <div className="mt-6 grid max-w-[58ch] grid-cols-3 gap-4 border-t border-line pt-4">
+                  {personaMotion.metrics.map(({ value, label }) => (
+                    <div key={label}>
+                      <p className="font-display text-lg font-bold text-accent">{value}</p>
+                      <p className="mt-0.5 text-xs leading-snug text-body/80">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {personaMotion.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+              <div className="mt-8">
+                <ProjectLinks links={personaMotion.links} />
+              </div>
+            </div>
+
+            {/* Demo GIF */}
+            <div className="flex items-center border-t border-line pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+              {personaMotion.image && (
+                <figure className="w-full">
+                  <div className="overflow-hidden rounded-md border border-line">
+                    <img
+                      src={personaMotion.image.src}
+                      alt={personaMotion.image.alt}
+                      loading="lazy"
+                      className="w-full"
+                    />
+                  </div>
+                  {personaMotion.image.caption && (
+                    <figcaption className="mt-3 font-mono text-xs text-body/70">
+                      {personaMotion.image.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Flagship */}
+      <Reveal className="mt-6 block">
         <div className="relative rounded-lg border border-line border-t-accent/60 bg-surface p-6 md:p-10">
           <div className="grid gap-8 md:grid-cols-[3fr,2fr] md:gap-10">
             <div>

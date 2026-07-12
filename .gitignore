@@ -3,3 +3,11 @@ dist
 .DS_Store
 *.local
 *.log
+
+# job-applier: compiled resume + per-job application outputs (keep private)
+/resume.pdf
+career/applications/
+*.aux
+*.out
+*.fls
+*.fdb_latexmk

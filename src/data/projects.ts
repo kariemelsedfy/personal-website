@@ -10,6 +10,7 @@ export type Project = {
   blurb: string
   bullets?: string[]
   metrics?: { value: string; label: string }[]
+  image?: { src: string; alt: string; caption?: string }
   tags: string[]
   links: ProjectLink[]
 }
@@ -34,6 +35,29 @@ export const flagship: Project = {
 
 export const pipeline = ['Upload', 'Redis Queue', 'GPU Worker · CatVTON', 'S3 Storage', 'WebSocket Push']
 
+export const personaMotion: Project = {
+  title: 'Persona-Motion — Audio-Driven Talking-Head Synthesis',
+  badge: 'Flagship · AI Generative Modeling',
+  blurb:
+    'Generates talking-head video of a person from speech audio by learning their facial-motion dynamics — not their pixels. A generative model maps wav2vec2 speech features to 205-d motion coefficients per frame, rendered to video by a frozen LivePortrait animator.',
+  bullets: [
+    'Reframed motion prediction as rectified flow matching with classifier-free guidance — fixing the mean-collapse "frozen face" failure of MSE regression with a 14.7M-param BiGRU velocity-field model.',
+    'Built the full audiovisual pipeline (face tracking, GPU motion extraction, wav2vec2 alignment) and a from-scratch contrastive SyncNet evaluator; trained end-to-end on a Slurm GPU cluster.',
+  ],
+  metrics: [
+    { value: '0.09 → 0.56', label: 'lip-sync confidence (ground truth 0.77)' },
+    { value: '~6×', label: 'sync gain vs. MSE regression baseline' },
+    { value: '14.7M', label: 'flow-model parameters' },
+  ],
+  image: {
+    src: `${import.meta.env.BASE_URL}persona-motion-demo.gif`,
+    alt: 'Side-by-side comparison of ground-truth footage and talking-head video generated from audio',
+    caption: 'Left: ground truth · Right: generated from audio (flow matching + CFG)',
+  },
+  tags: ['Python', 'PyTorch', 'Flow Matching', 'CFG', 'wav2vec2', 'LivePortrait', 'Slurm HPC'],
+  links: [{ label: 'Code', href: 'https://github.com/kariemelsedfy/video-persona-gen', kind: 'github' }],
+}
+
 export const featured: Project[] = [
   {
     title: 'YOLO Encoder Transfer: Detection → Segmentation',
@@ -50,14 +74,6 @@ export const featured: Project[] = [
       { label: 'Read the paper', href: `${import.meta.env.BASE_URL}yolo-encoder-transfer.pdf`, kind: 'paper' },
       { label: 'Code', href: 'https://github.com/kariemelsedfy/Independent-Study', kind: 'github' },
     ],
-  },
-  {
-    title: 'video-persona-gen',
-    badge: 'AI · In progress',
-    blurb:
-      'Audio-visual avatar generation — learning audio-driven motion from self-recorded footage and rendering talking-head video with a LivePortrait-style backbone. Lip sync, expression modeling, and head-motion generation.',
-    tags: ['Python', 'PyTorch', 'LivePortrait', 'Computer Vision'],
-    links: [{ label: 'Code', href: 'https://github.com/kariemelsedfy/video-persona-gen', kind: 'github' }],
   },
   {
     title: 'The MyAnimeList Populator',
