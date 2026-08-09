@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="absolute -inset-3 rotate-3 rounded-[1.4rem] border border-accent/30 bg-accent/10" />
         <div className="relative overflow-hidden rounded-2xl border border-line/80 bg-surface shadow-2xl shadow-black/30">
           <img
-            src="/personal_photo.JPG"
+            src={`${import.meta.env.BASE_URL}personal_photo.JPG`}
             alt="Karim ElSedfy"
             className="block aspect-[2/3] w-full object-cover object-top"
           />
