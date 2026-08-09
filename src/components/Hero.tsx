@@ -53,7 +53,7 @@ export default function Hero() {
   const showCanvas = canvasOk && !reduce
 
   return (
-    <section id="top" className="relative flex min-h-screen items-center">
+    <section id="top" className="relative flex min-h-screen flex-col items-center justify-center md:flex-row">
       {/* Static gradient is always present; the shader canvas paints over it when enabled */}
       <div className="hero-static absolute inset-0" />
       {showCanvas && (
@@ -64,7 +64,18 @@ export default function Hero() {
       {/* Fade the bottom edge into the page background */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-base" />
 
-      <div className="relative z-10 mx-auto w-full max-w-content px-6 pt-16">
+      <figure className="relative z-10 mb-8 mt-24 w-[min(58vw,17rem)] md:absolute md:right-[max(1.5rem,calc((100vw-72rem)/2))] md:top-1/2 md:mb-0 md:mt-0 md:w-[min(30vw,22rem)] md:-translate-y-1/2 lg:w-96">
+        <div className="absolute -inset-3 rotate-3 rounded-[1.4rem] border border-accent/30 bg-accent/10" />
+        <div className="relative overflow-hidden rounded-2xl border border-line/80 bg-surface shadow-2xl shadow-black/30">
+          <img
+            src="/personal_photo.JPG"
+            alt="Karim ElSedfy"
+            className="block aspect-[2/3] w-full object-cover object-top"
+          />
+        </div>
+      </figure>
+
+      <div className="relative z-10 mx-auto w-full max-w-content px-6 pt-16 md:max-w-[58%] md:self-center">
         <Enter order={0} reduce={reduce}>
           <span className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 px-4 py-1.5 font-mono text-xs text-bright backdrop-blur">
             <span className="relative flex h-2 w-2">
