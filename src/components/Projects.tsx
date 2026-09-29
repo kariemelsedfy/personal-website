@@ -1,3 +1,4 @@
+import { useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, ExternalLink, FileText, Github, Play } from 'lucide-react'
 import Section from './ui/Section'
 import Reveal from './ui/Reveal'
@@ -6,6 +7,7 @@ import Tag from './ui/Tag'
 import {
   featured,
   flagship,
+  glint,
   more,
   personaMotion,
   pipeline,
@@ -37,6 +39,33 @@ function ProjectLinks({ links }: { links: ProjectLink[] }) {
         </a>
       ))}
     </div>
+  )
+}
+
+function DemoVideo({ video }: { video: NonNullable<Project['video']> }) {
+  const reduce = useReducedMotion() ?? false
+  return (
+    <figure className="w-full">
+      <div className="overflow-hidden rounded-md border border-line">
+        <video
+          poster={video.poster}
+          aria-label={video.label}
+          autoPlay={!reduce}
+          controls={reduce}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="block aspect-video w-full"
+        >
+          {video.webm && <source src={video.webm} type="video/webm" />}
+          <source src={video.src} type="video/mp4" />
+        </video>
+      </div>
+      {video.caption && (
+        <figcaption className="mt-3 font-mono text-xs text-body/70">{video.caption}</figcaption>
+      )}
+    </figure>
   )
 }
 
@@ -202,6 +231,54 @@ export default function Projects() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* GLINT */}
+      <Reveal className="mt-6 block">
+        <div className="relative rounded-lg border border-line border-t-accent/60 bg-surface p-6 md:p-10">
+          <div className="grid gap-8 md:grid-cols-[3fr,2fr] md:gap-10">
+            <div>
+              <p className="mb-3 font-mono text-xs text-accent">{glint.badge}</p>
+              <h3 className="font-display text-2xl font-bold leading-[1.35] text-bright md:text-3xl md:leading-[1.35]">
+                {glint.title}
+              </h3>
+              <p className="mt-4 max-w-[60ch] leading-relaxed">{glint.blurb}</p>
+              <ul className="mt-5 max-w-[58ch] space-y-2.5 text-sm">
+                {glint.bullets?.map((bullet) => (
+                  <li key={bullet} className="flex gap-3 leading-relaxed">
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">
+                      ▹
+                    </span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+              {glint.metrics && (
+                <div className="mt-6 grid max-w-[58ch] grid-cols-3 gap-4 border-t border-line pt-4">
+                  {glint.metrics.map(({ value, label }) => (
+                    <div key={label}>
+                      <p className="font-display text-lg font-bold text-accent">{value}</p>
+                      <p className="mt-0.5 text-xs leading-snug text-body/80">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {glint.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+              <div className="mt-8">
+                <ProjectLinks links={glint.links} />
+              </div>
+            </div>
+
+            {/* Gameplay clip */}
+            <div className="flex items-center border-t border-line pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+              {glint.video && <DemoVideo video={glint.video} />}
             </div>
           </div>
         </div>

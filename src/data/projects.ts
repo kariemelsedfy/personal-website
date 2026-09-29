@@ -11,6 +11,7 @@ export type Project = {
   bullets?: string[]
   metrics?: { value: string; label: string }[]
   image?: { src: string; alt: string; caption?: string }
+  video?: { src: string; webm?: string; poster: string; label: string; caption?: string }
   tags: string[]
   links: ProjectLink[]
 }
@@ -56,6 +57,35 @@ export const personaMotion: Project = {
   },
   tags: ['Python', 'PyTorch', 'Flow Matching', 'CFG', 'wav2vec2', 'LivePortrait', 'Slurm HPC'],
   links: [{ label: 'Code', href: 'https://github.com/kariemelsedfy/video-persona-gen', kind: 'github' }],
+}
+
+export const glint: Project = {
+  title: 'GLINT — World Sprint',
+  badge: '{Tech: Europe} AI Gaming Hack · Sep 2026',
+  blurb:
+    'A reverse-geography treasure speedrun that runs in the browser. You get pictures of objects, never the city: work out where each one belongs, spin a cartoon 3D globe, fly there and find the treasure on foot before the clock runs out.',
+  bullets: [
+    'The pitch: knowing the world makes you faster. I built it solo in about 8 hours for a one-day AI game hackathon. A wrong city costs +5 s and each hint +10–35 s. Item placement is seeded, so every retry of a trial is identical and your time can only improve by playing better.',
+    'Three.js through React Three Fiber, using a single Canvas with one camera authority. Five low-poly cities (Paris, Giza, Rome, San Francisco, Berlin) are pure data, so collision, the in-city map and the hint zones can never disagree. A Zustand store owns every rule, and movement is frame-rate independent.',
+    'Built by 11 Devin agents working in parallel: a lead integrator plus workers for gameplay, the globe, each city, the UI, content and QA. Each worker owned its own paths and worked against shared TypeScript contracts, and the lead merged their PRs one at a time. Playwright bots use A* pathfinding to walk every trial end to end.',
+  ],
+  metrics: [
+    { value: '5', label: 'low-poly 3D cities' },
+    { value: '11', label: 'parallel AI agents' },
+    { value: '0', label: 'network calls: a 1.1 MB static build' },
+  ],
+  video: {
+    src: `${import.meta.env.BASE_URL}glint-demo.mp4`,
+    webm: `${import.meta.env.BASE_URL}glint-demo.webm`,
+    poster: `${import.meta.env.BASE_URL}glint-poster.jpg`,
+    label: 'GLINT gameplay: pick an expedition, read the clues, fly to Paris and Giza on the globe, collect both treasures and get a gold medal',
+    caption: 'Real gameplay: Icons expedition, Paris → Giza (walking shown at 2× speed)',
+  },
+  tags: ['TypeScript', 'React', 'Three.js', 'React Three Fiber', 'Zustand', 'Vite', 'Playwright', 'Devin'],
+  links: [
+    { label: 'Play on itch.io', href: 'https://karimelsedfy.itch.io/glint-world-sprint', kind: 'live' },
+    { label: 'Code', href: 'https://github.com/kariemelsedfy/glint-world-sprint', kind: 'github' },
+  ],
 }
 
 export const featured: Project[] = [
