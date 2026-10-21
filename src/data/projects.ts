@@ -11,9 +11,68 @@ export type Project = {
   bullets?: string[]
   metrics?: { value: string; label: string }[]
   image?: { src: string; alt: string; caption?: string }
+  gallery?: { src: string; alt: string; caption?: string }[]
   video?: { src: string; webm?: string; poster: string; label: string; caption?: string }
   tags: string[]
   links: ProjectLink[]
+}
+
+export const lemmaNotes: Project = {
+  title: 'Lemma Notes AI — Handwriting-Native AI Notebook',
+  badge: 'Latest · AI Product & Systems · iPadOS',
+  blurb:
+    'An iPad notebook where AI answers directly on the page in your own handwriting. Circle an equation, question, or unfinished thought; Lemma can solve it, explain it, or plot it, then returns a movable “ghost” answer you choose to keep or discard.',
+  bullets: [
+    'Built the handwriting engine from first principles: calibration and continual on-device glyph harvesting, stroke-to-character matching, baseline-aware layout, per-glyph variation, and pen-width/pressure matching make generated ink look native to the writer.',
+    'Designed a hybrid intelligence pipeline using Vision OCR and deterministic local routing for arithmetic and plots. Hosted Gemini handles harder requests but can only return schema-constrained JSON; a fail-closed validator, placement engine, and deterministic renderer control every mark that reaches the page.',
+    'Engineered a production-ready system across ~40K lines of Swift: six one-way local packages, a Swift-on-Linux Cloud Run service, StoreKit 2 subscriptions, App Attest request signing, server-side receipt verification, atomic Firestore spend ledgers, and privacy gates that keep notebooks and glyph banks on-device.',
+  ],
+  metrics: [
+    { value: '960+', label: 'automated tests across app, AI, ink, and server' },
+    { value: '40K', label: 'lines of Swift across 289 files' },
+    { value: '29', label: 'written architecture decisions' },
+  ],
+  image: {
+    src: `${import.meta.env.BASE_URL}lemma-demo-explain.gif`,
+    alt: 'An iPad recording showing a handwritten prompt being circled and answered in the writer’s handwriting',
+    caption: 'Real iPad capture: write, circle, tap Ask, and receive an answer in your own hand.',
+  },
+  gallery: [
+    {
+      src: `${import.meta.env.BASE_URL}lemma-answer-and-math.png`,
+      alt: 'Lemma Notes AI completing a handwritten explanation of photosynthesis and solving an equation line by line',
+      caption: 'One page, two modes: explain a concept and solve an equation line by line.',
+    },
+    {
+      src: `${import.meta.env.BASE_URL}lemma-device-explain.png`,
+      alt: 'A lassoed handwritten question with an AI answer rendered as a movable ghost preview',
+      caption:
+        'Answers arrive as ghost ink: drag, resize, keep, or discard before the page changes.',
+    },
+  ],
+  tags: [
+    'Swift 6.2',
+    'SwiftUI',
+    'PencilKit',
+    'Vision OCR',
+    'Gemini',
+    'Cloud Run',
+    'Firestore',
+    'StoreKit 2',
+    'App Attest',
+  ],
+  links: [
+    {
+      label: 'Explore the code',
+      href: 'https://github.com/kariemelsedfy/Lemma-Notes-AI',
+      kind: 'github',
+    },
+    {
+      label: 'Watch full demo',
+      href: 'https://github.com/kariemelsedfy/Lemma-Notes-AI/blob/main/docs/media/demo.mp4',
+      kind: 'video',
+    },
+  ],
 }
 
 export const flagship: Project = {
@@ -25,16 +84,40 @@ export const flagship: Project = {
     'Queue-based pipeline: Redis job queue + pub/sub feeding a Python/PyTorch GPU worker running CatVTON on Linode Kubernetes Engine, autoscaled by KEDA on queue depth.',
     'Real-time UX: a gateway WebSocket routes per-user job-done events for automatic frontend refresh; presigned S3 URLs let the browser upload directly to storage.',
   ],
-  tags: ['React', 'Node.js', 'Redis', 'PostgreSQL', 'PyTorch', 'Kubernetes', 'KEDA', 'WebSocket', 'S3'],
+  tags: [
+    'React',
+    'Node.js',
+    'Redis',
+    'PostgreSQL',
+    'PyTorch',
+    'Kubernetes',
+    'KEDA',
+    'WebSocket',
+    'S3',
+  ],
   links: [
     { label: 'Live demo', href: 'https://proteus-frontend-psi.vercel.app/', kind: 'live' },
     { label: 'Demo video', href: 'https://youtu.be/D6bWGE5YtJ0', kind: 'video' },
-    { label: 'Frontend', href: 'https://github.com/AhmedAlSunbati712/proteus-frontend', kind: 'github' },
-    { label: 'Backend', href: 'https://github.com/AhmedAlSunbati712/proteus-backend', kind: 'github' },
+    {
+      label: 'Frontend',
+      href: 'https://github.com/AhmedAlSunbati712/proteus-frontend',
+      kind: 'github',
+    },
+    {
+      label: 'Backend',
+      href: 'https://github.com/AhmedAlSunbati712/proteus-backend',
+      kind: 'github',
+    },
   ],
 }
 
-export const pipeline = ['Upload', 'Redis Queue', 'GPU Worker · CatVTON', 'S3 Storage', 'WebSocket Push']
+export const pipeline = [
+  'Upload',
+  'Redis Queue',
+  'GPU Worker · CatVTON',
+  'S3 Storage',
+  'WebSocket Push',
+]
 
 export const personaMotion: Project = {
   title: 'Persona-Motion — Audio-Driven Talking-Head Synthesis',
@@ -56,7 +139,9 @@ export const personaMotion: Project = {
     caption: 'Left: ground truth · Right: generated from audio (flow matching + CFG)',
   },
   tags: ['Python', 'PyTorch', 'Flow Matching', 'CFG', 'wav2vec2', 'LivePortrait', 'Slurm HPC'],
-  links: [{ label: 'Code', href: 'https://github.com/kariemelsedfy/video-persona-gen', kind: 'github' }],
+  links: [
+    { label: 'Code', href: 'https://github.com/kariemelsedfy/video-persona-gen', kind: 'github' },
+  ],
 }
 
 export const glint: Project = {
@@ -78,12 +163,26 @@ export const glint: Project = {
     src: `${import.meta.env.BASE_URL}glint-demo.mp4`,
     webm: `${import.meta.env.BASE_URL}glint-demo.webm`,
     poster: `${import.meta.env.BASE_URL}glint-poster.jpg`,
-    label: 'GLINT gameplay: pick an expedition, read the clues, fly to Paris and Giza on the globe, collect both treasures and get a gold medal',
+    label:
+      'GLINT gameplay: pick an expedition, read the clues, fly to Paris and Giza on the globe, collect both treasures and get a gold medal',
     caption: 'Real gameplay: Icons expedition, Paris → Giza (walking shown at 2× speed)',
   },
-  tags: ['TypeScript', 'React', 'Three.js', 'React Three Fiber', 'Zustand', 'Vite', 'Playwright', 'Devin'],
+  tags: [
+    'TypeScript',
+    'React',
+    'Three.js',
+    'React Three Fiber',
+    'Zustand',
+    'Vite',
+    'Playwright',
+    'Devin',
+  ],
   links: [
-    { label: 'Play on itch.io', href: 'https://karimelsedfy.itch.io/glint-world-sprint', kind: 'live' },
+    {
+      label: 'Play on itch.io',
+      href: 'https://karimelsedfy.itch.io/glint-world-sprint',
+      kind: 'live',
+    },
     { label: 'Code', href: 'https://github.com/kariemelsedfy/glint-world-sprint', kind: 'github' },
   ],
 }
@@ -101,7 +200,11 @@ export const featured: Project[] = [
     ],
     tags: ['PyTorch', 'YOLOv1', 'U-Net', 'CUB-200'],
     links: [
-      { label: 'Read the paper', href: `${import.meta.env.BASE_URL}yolo-encoder-transfer.pdf`, kind: 'paper' },
+      {
+        label: 'Read the paper',
+        href: `${import.meta.env.BASE_URL}yolo-encoder-transfer.pdf`,
+        kind: 'paper',
+      },
       { label: 'Code', href: 'https://github.com/kariemelsedfy/Independent-Study', kind: 'github' },
     ],
   },
@@ -112,7 +215,11 @@ export const featured: Project[] = [
     tags: ['Angular', 'Node.js', 'Express', 'PostgreSQL', 'Docker', 'Cloud Run'],
     links: [
       { label: 'Live app', href: 'https://themyanimelistpopulator.web.app', kind: 'live' },
-      { label: 'Code', href: 'https://github.com/kariemelsedfy/The-MyAnimeList-Populator', kind: 'github' },
+      {
+        label: 'Code',
+        href: 'https://github.com/kariemelsedfy/The-MyAnimeList-Populator',
+        kind: 'github',
+      },
     ],
   },
   {

@@ -1,0 +1,204 @@
+%-------------------------
+% Resume in Latex — AI Research Internship version
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+% glyphtounicode is a pdfTeX-only feature; guard it so the file also compiles
+% under XeTeX/Tectonic (which embeds proper Unicode natively).
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+\fi
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{2.35in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable (pdfTeX only)
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-8pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=1pt, topsep=2pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Karim ElSedfy}
+\end{center}
+
+\begin{center}
+    \small {kariemelsedfy@gmail.com} $|$
+\href{https://kariemelsedfy.github.io/personal-website/}{\underline{Website}} $|$
+\href{https://www.linkedin.com/in/karim-el-sedfy-4809711a2/}{\underline{LinkedIn}} $|$
+\href{https://github.com/kariemelsedfy}{\underline{GitHub}}
+\end{center}
+
+\vspace{-2mm}
+\begin{center}
+    \small \textit{AI/ML Research $\cdot$ Generative Modeling $\cdot$ Computer Vision}
+\end{center}
+
+\vspace{-7mm}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Bowdoin College}{May 2028}
+      {B.A. in Computer Science and Mathematics}{Brunswick, ME}
+      \resumeItemListStart
+      \resumeItem{\textbf{GPA:} 3.85/4.00, Dean's List}
+      \resumeItem{\textbf{Relevant Coursework:} Deep Learning, Artificial Intelligence, Computational Complexity, Algorithms, Computer Systems, Linear Algebra}
+        \resumeItemListEnd
+      \vspace{-2mm}
+  \resumeSubHeadingListEnd
+
+
+\vspace{-4mm}
+%-----------Research and ML Experience-----------
+\section{Research \& ML Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Computer Science Department, Bowdoin College}{Sep. 2025 -- Dec. 2025}
+      {Independent Study Researcher}{Brunswick, ME}
+      \resumeItemListStart
+        \resumeItem{Investigated whether a frozen, detection-trained YOLO encoder could transfer to semantic segmentation, implementing dense stride-1 inference and controlled decoder variants with and without U-Net skip connections in PyTorch.}
+        \resumeItem{Improved mean IoU from 0.600 to 0.684 (+14.0\%) on CUB-200 while preserving 0.88 detection mAP@0.5; analyzed the ablation results and authored an \href{https://kariemelsedfy.github.io/personal-website/yolo-encoder-transfer.pdf}{\underline{IEEE-format paper}} under Prof. Jeova Farias.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Palmera Systems Co.}{Jun. 2025 -- Aug. 2025}
+      {Software Engineer Intern}{Cairo, Egypt}
+      \resumeItemListStart
+        \resumeItem{Architected face recognition and anti-spoofing for the smartIN app (8K daily users), leading dataset curation, model fine-tuning, and evaluation with DeepFace/OpenCV to reach 96\% detection accuracy.}
+        \resumeItem{Deployed the models behind PostgreSQL-backed REST services matching live captures in under 2s, cutting authentication latency by 50\%.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Ungated Research, Bowdoin College}{Mar. 2026 -- Jun. 2026}
+      {Software Engineer}{Brunswick, ME}
+      \resumeItemListStart
+        \resumeItem{Co-maintained a multithreaded Python research-paper pipeline across 11+ economics journals, adding LLM-generated summaries, tags, and translations plus error-detection and automated-repair diagnostics; surfaced 6,080 new articles through 10 years of Crossref records.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Dropbox}{May 2026 -- Aug. 2026}
+      {Software Engineer Intern}{Remote -- San Francisco, CA}
+      \resumeItemListStart
+        \resumeItem{Won two of three company hackathon awards leading an AI system that converted customer reports into privacy-safe engineering investigations by correlating product activity, production errors, code changes, and issue history.}
+        \resumeItem{Shipped two full-stack experiments reaching $\sim$350K users weekly; the first launched four weeks early and the second lifted Standard-plan conversion 2.3$\times$ over the prior flow.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+\section{Selected AI Projects}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Persona-Motion: Audio-Driven Talking-Head Synthesis}{\hspace{-23mm}\href{https://github.com/kariemelsedfy/video-persona-gen}{GitHub}}
+{Python, PyTorch, Flow Matching, LivePortrait, Slurm HPC}{}
+\resumeItemListStart
+  \resumeItem{Reframed audio-to-motion prediction as rectified flow matching after diagnosing mean collapse in an MSE baseline; a 14.7M-parameter BiGRU velocity field maps wav2vec2 features to 205-d facial-motion coefficients rendered by frozen LivePortrait.}
+  \resumeItem{Designed the training and evaluation pipeline on a Slurm GPU cluster, including classifier-free guidance and a from-scratch contrastive SyncNet evaluator; improved lip-sync confidence $\sim$6$\times$ (0.09 $\to$ 0.56, vs.\ 0.77 ground truth).}
+\resumeItemListEnd
+
+\resumeSubheading
+{Lemma Notes AI: Handwriting-Native AI Notebook}{\hspace{-23mm}\href{https://github.com/kariemelsedfy/Lemma-Notes-AI}{GitHub}}
+{Swift, Vision, PencilKit, Gemini, Cloud Run, Firestore}{}
+\resumeItemListStart
+  \resumeItem{Built an on-device handwriting synthesis system from first principles: guided glyph calibration, continual sample harvesting, chamfer-distance stroke classification, baseline-aware layout, variation sampling, and pen-pressure matching.}
+  \resumeItem{Designed a hybrid Vision OCR + Gemini pipeline where hosted models return only schema-constrained JSON and deterministic code validates, places, and renders ink; verified the 40K-line app/server system with 960+ automated tests.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------Skill and Interests-----------
+\vspace*{-7mm}
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages:} Python, Swift, TypeScript, JavaScript, SQL, Java \\
+     \textbf{ML / Research:} PyTorch, flow matching, classifier-free guidance, Hugging Face Transformers, OpenCV, Vision OCR, model evaluation, ablation studies \\
+     \textbf{Systems / Data:} Slurm HPC, Docker, Kubernetes, Cloud Run, AWS S3, Firestore, PostgreSQL, Redis, SQLAlchemy \\
+     \textbf{Frameworks and Tools:} SwiftUI, PencilKit, React, FastAPI, Node.js, Git, GitHub Actions
+    }}
+ \end{itemize}
+
+\end{document}

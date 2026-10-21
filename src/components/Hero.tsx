@@ -125,7 +125,14 @@ export default function Hero() {
               download="KarimElSedfyResume.pdf"
               className="rounded-md border border-line bg-surface px-6 py-3 font-semibold text-bright transition-colors hover:border-accent/50"
             >
-              Download resume
+              General résumé
+            </a>
+            <a
+              href={profile.aiResumeUrl}
+              download="KarimElSedfy-AI-Research-Resume.pdf"
+              className="rounded-md border border-line bg-surface px-6 py-3 font-semibold text-bright transition-colors hover:border-accent/50"
+            >
+              AI research résumé
             </a>
             <div className="ml-1 flex items-center gap-4">
               <a

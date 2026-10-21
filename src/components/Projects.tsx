@@ -8,6 +8,7 @@ import {
   featured,
   flagship,
   glint,
+  lemmaNotes,
   more,
   personaMotion,
   pipeline,
@@ -119,8 +120,93 @@ function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
 export default function Projects() {
   return (
     <Section id="projects" eyebrow="projects" title="Selected work">
-      {/* Persona-Motion hero */}
+      {/* Lemma Notes AI hero */}
       <Reveal>
+        <article className="relative overflow-hidden rounded-lg border border-line border-t-accent/60 bg-surface">
+          <div className="grid gap-8 p-6 md:grid-cols-[3fr,2fr] md:gap-10 md:p-10">
+            <div>
+              <p className="mb-3 font-mono text-xs text-accent">{lemmaNotes.badge}</p>
+              <h3 className="font-display text-2xl font-bold leading-[1.35] text-bright md:text-3xl md:leading-[1.35]">
+                {lemmaNotes.title}
+              </h3>
+              <p className="mt-4 max-w-[62ch] text-base leading-relaxed">{lemmaNotes.blurb}</p>
+              <ul className="mt-5 max-w-[64ch] space-y-3 text-sm">
+                {lemmaNotes.bullets?.map((bullet) => (
+                  <li key={bullet} className="flex gap-3 leading-relaxed">
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-accent">
+                      ▹
+                    </span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+              {lemmaNotes.metrics && (
+                <div className="mt-6 grid max-w-[62ch] grid-cols-3 gap-4 border-t border-line pt-4">
+                  {lemmaNotes.metrics.map(({ value, label }) => (
+                    <div key={label}>
+                      <p className="font-display text-lg font-bold text-accent">{value}</p>
+                      <p className="mt-0.5 text-xs leading-snug text-body/80">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {lemmaNotes.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+              <div className="mt-8">
+                <ProjectLinks links={lemmaNotes.links} />
+              </div>
+            </div>
+
+            <div className="flex items-center border-t border-line pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+              {lemmaNotes.image && (
+                <figure className="mx-auto w-full max-w-[22rem]">
+                  <div className="overflow-hidden rounded-[1.25rem] border border-line bg-white shadow-2xl shadow-black/25">
+                    <img
+                      src={lemmaNotes.image.src}
+                      alt={lemmaNotes.image.alt}
+                      loading="eager"
+                      className="w-full"
+                    />
+                  </div>
+                  {lemmaNotes.image.caption && (
+                    <figcaption className="mt-3 font-mono text-xs leading-relaxed text-body/70">
+                      {lemmaNotes.image.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+            </div>
+          </div>
+
+          {lemmaNotes.gallery && (
+            <div className="grid gap-5 border-t border-line bg-base/25 p-6 md:grid-cols-[0.9fr,1.35fr] md:p-10">
+              {lemmaNotes.gallery.map((image) => (
+                <figure key={image.src} className="flex min-w-0 flex-col">
+                  <div className="flex h-72 items-center justify-center overflow-hidden rounded-md border border-line bg-white sm:h-80">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading="lazy"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  {image.caption && (
+                    <figcaption className="mt-3 font-mono text-xs leading-relaxed text-body/70">
+                      {image.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          )}
+        </article>
+      </Reveal>
+
+      {/* Persona-Motion hero */}
+      <Reveal className="mt-6 block">
         <div className="relative rounded-lg border border-line border-t-accent/60 bg-surface p-6 md:p-10">
           <div className="grid gap-8 md:grid-cols-[3fr,2fr] md:gap-10">
             <div>

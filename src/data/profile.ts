@@ -7,6 +7,7 @@ export const profile = {
   github: 'https://github.com/kariemelsedfy',
   linkedin: 'https://www.linkedin.com/in/karim-el-sedfy-4809711a2/',
   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
+  aiResumeUrl: `${import.meta.env.BASE_URL}resume-ai-research.pdf`,
   paperUrl: `${import.meta.env.BASE_URL}yolo-encoder-transfer.pdf`,
   tagline: 'Full-stack engineer who ships AI/ML systems end-to-end.',
   sub: 'CS + Math at Bowdoin ’28, currently interning at Dropbox. I build GPU inference pipelines, real-time web apps, and dev tools — from first commit to production.',
