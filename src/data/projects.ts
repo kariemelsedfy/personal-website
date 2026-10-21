@@ -69,7 +69,7 @@ export const lemmaNotes: Project = {
     },
     {
       label: 'Watch full demo',
-      href: 'https://github.com/kariemelsedfy/Lemma-Notes-AI/blob/main/docs/media/demo.mp4',
+      href: 'https://www.dropbox.com/scl/fi/1pf5x1o2j3q156gh2pigq/Lemma-Notes-AI-Demo.mp4?rlkey=7qvzdzxh64qm2x5u4iw1zx8a3&dl=0',
       kind: 'video',
     },
   ],
