@@ -129,7 +129,9 @@ export default function Projects() {
               <h3 className="font-display text-2xl font-bold leading-[1.35] text-bright md:text-3xl md:leading-[1.35]">
                 {lemmaNotes.title}
               </h3>
-              <p className="mt-4 max-w-[62ch] text-base leading-relaxed">{lemmaNotes.blurb}</p>
+              <p className="mt-4 max-w-[62ch] text-[1rem] leading-relaxed text-body">
+                {lemmaNotes.blurb}
+              </p>
               <ul className="mt-5 max-w-[64ch] space-y-3 text-sm">
                 {lemmaNotes.bullets?.map((bullet) => (
                   <li key={bullet} className="flex gap-3 leading-relaxed">
