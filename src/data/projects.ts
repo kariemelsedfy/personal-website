@@ -19,13 +19,14 @@ export type Project = {
 
 export const lemmaNotes: Project = {
   title: 'Lemma Notes AI — Handwriting-Native AI Notebook',
-  badge: 'Latest · AI Product & Systems · iPadOS',
+  badge: 'Latest · Student AI · Gemini on Google Cloud',
   blurb:
-    'An iPad notebook where AI answers directly on the page in your own handwriting. Circle an equation, question, or unfinished thought; Lemma can solve it, explain it, or plot it, then returns a movable “ghost” answer you choose to keep or discard.',
+    'Built for students who want to spend more time understanding and less time copying. Write notes or work through a problem set naturally on iPad, circle anything you are stuck on, and Lemma explains it, solves it, or plots it directly on the page in your own handwriting—cutting the time lost to searching, retyping, formatting, and switching between apps.',
   bullets: [
-    'Built the handwriting engine from first principles: calibration and continual on-device glyph harvesting, stroke-to-character matching, baseline-aware layout, per-glyph variation, and pen-width/pressure matching make generated ink look native to the writer.',
-    'Designed a hybrid intelligence pipeline using Vision OCR and deterministic local routing for arithmetic and plots. Hosted Gemini handles harder requests but can only return schema-constrained JSON; a fail-closed validator, placement engine, and deterministic renderer control every mark that reaches the page.',
-    'Engineered a production-ready system across ~40K lines of Swift: six one-way local packages, a Swift-on-Linux Cloud Run service, StoreKit 2 subscriptions, App Attest request signing, server-side receipt verification, atomic Firestore spend ledgers, and privacy gates that keep notebooks and glyph banks on-device.',
+    'Keeps studying in one continuous flow: circle a half-finished definition for a quick explanation, select an equation for line-by-line working, or ask for a graph. Each response arrives as movable “ghost ink” that you can drag, resize, keep, or discard, so AI helps without taking over your notebook.',
+    'Built the intelligence layer around Google Gemini and GCP. A Swift-on-Linux service runs on Cloud Run, uses Firestore for atomic allowance and spend ledgers, and sends harder handwritten questions to Gemini; on-device Vision OCR and local arithmetic/plotting keep simpler work fast and available without a round trip.',
+    'Treated model output as untrusted data: Gemini returns a schema-constrained JSON answer specification, then fail-closed validation, placement, and deterministic rendering decide exactly what reaches the page. Notebooks and personal glyph banks stay on-device.',
+    'Created the handwriting engine from first principles—calibration, continual glyph harvesting, stroke matching, baseline-aware layout, character variation, and pen-pressure matching—inside a ~40K-line Swift system backed by 960+ automated tests.',
   ],
   metrics: [
     { value: '960+', label: 'automated tests across app, AI, ink, and server' },
@@ -51,13 +52,13 @@ export const lemmaNotes: Project = {
     },
   ],
   tags: [
+    'Google Gemini',
+    'GCP Cloud Run',
+    'Firestore',
     'Swift 6.2',
     'SwiftUI',
     'PencilKit',
     'Vision OCR',
-    'Gemini',
-    'Cloud Run',
-    'Firestore',
     'StoreKit 2',
     'App Attest',
   ],
