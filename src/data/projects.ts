@@ -40,15 +40,16 @@ export const lemmaNotes: Project = {
   },
   gallery: [
     {
-      src: `${import.meta.env.BASE_URL}lemma-answer-and-math.png`,
-      alt: 'Lemma Notes AI completing a handwritten explanation of photosynthesis and solving an equation line by line',
-      caption: 'One page, two modes: explain a concept and solve an equation line by line.',
+      src: `${import.meta.env.BASE_URL}lemma-device-explain.png`,
+      alt: 'A circled question about Google DeepMind with an AI answer rendered in the user’s handwriting',
+      caption:
+        'Ask about anything you wrote; the answer arrives as movable ghost ink in your handwriting.',
     },
     {
-      src: `${import.meta.env.BASE_URL}lemma-device-explain.png`,
-      alt: 'A lassoed handwritten question with an AI answer rendered as a movable ghost preview',
+      src: `${import.meta.env.BASE_URL}lemma-device-proof.png`,
+      alt: 'A circled proof request answered step by step in the same handwriting and blue ink',
       caption:
-        'Answers arrive as ghost ink: drag, resize, keep, or discard before the page changes.',
+        'A proof request answered step by step in the same handwriting and ink colour.',
     },
   ],
   tags: [
@@ -70,7 +71,7 @@ export const lemmaNotes: Project = {
     },
     {
       label: 'Watch full demo',
-      href: 'https://www.dropbox.com/scl/fi/1pf5x1o2j3q156gh2pigq/Lemma-Notes-AI-Demo.mp4?rlkey=7qvzdzxh64qm2x5u4iw1zx8a3&dl=0',
+      href: 'https://www.dropbox.com/scl/fi/vs6c4finbs2v4bm7gpcic/ScreenRecording_10-26-2026-10-46-24_1.MP4?rlkey=dwyoquf8dinhjdljx8x3nkykd&st=ccmph7m9&dl=0',
       kind: 'video',
     },
   ],

@@ -184,7 +184,7 @@ export default function Projects() {
           </div>
 
           {lemmaNotes.gallery && (
-            <div className="grid gap-5 border-t border-line bg-base/25 p-6 md:grid-cols-[0.9fr,1.35fr] md:p-10">
+            <div className="grid gap-5 border-t border-line bg-base/25 p-6 md:grid-cols-2 md:p-10">
               {lemmaNotes.gallery.map((image) => (
                 <figure key={image.src} className="flex min-w-0 flex-col">
                   <div className="flex h-72 items-center justify-center overflow-hidden rounded-md border border-line bg-white sm:h-80">
